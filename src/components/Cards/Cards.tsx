@@ -46,13 +46,13 @@ export const Cards: FC<CardsProps> = ({searchText, selectedFilter}) => {
                         ? item.region.toLowerCase() === selectedFilter?.value.toLocaleLowerCase()
                         : true)
                     .filter((item: CountryType) => item.name.common.toLowerCase().includes(searchText.toLowerCase()))
-                    .map(item => card({
-                        flag: item.flags.svg,
-                        name: item.name.common,
-                        population: item.population,
-                        region: item.region,
-                        capital: item.capital,
-                        cca3: item.cca3,
+                    .map(({flags, name, population, region, capital, cca3}) => card({
+                        flag: flags.svg,
+                        name: name.common,
+                        population: population,
+                        region: region,
+                        capital: capital,
+                        cca3: cca3,
                     }))}
             </div>
         </>
