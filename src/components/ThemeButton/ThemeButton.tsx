@@ -12,8 +12,8 @@ export const ThemeButton = () => {
     };
 
     return (
-        <button onClick={handleOnClick}>
-            <MoonIcon /> Dark Mode
+        <button onClick={handleOnClick} className="text-[15px] sm:text-md flex items-center text-dark-blue-lmt dark:text-white">
+            <MoonIcon className="w-[20px] mr-2.5" /> Dark Mode
         </button>
     );
 };

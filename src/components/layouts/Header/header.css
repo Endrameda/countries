@@ -1,0 +1,7 @@
+.header {
+    @apply drop-shadow-md;
+}
+
+.header__container {
+    @apply max-w-[1300px] mx-auto flex justify-between items-center;
+}
