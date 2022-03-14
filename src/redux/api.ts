@@ -10,7 +10,7 @@ export const countriesApi = createApi({
     endpoints: (build) => ({
         getAllCountries: build.query<CountryType[], void>({
             query: () => '/all',
-        })
+        }),
     })
 });
 

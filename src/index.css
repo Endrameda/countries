@@ -8,6 +8,10 @@ html {
     @apply bg-white-smoke;
 }
 
+html.dark {
+    @apply bg-dark-blue-dmb;
+}
+
 body {
     @apply font-nunito;
 }

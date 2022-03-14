@@ -1,24 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Header} from "../layouts/Header/Header";
 import {Content} from "../layouts/content/Content";
-import {Cards} from "../Cards/Cards";
-import {FilterWrapper} from "../FilterWrapperp/FilterWrapper";
+import {Routes, Route} from "react-router-dom";
+import {Main} from "../../pages/Main/Main";
+import {DetailPage} from "../../pages/Detail/DetailPage";
 
 function App() {
-    const [searchText, setSearchText] = useState('');
-    const [selectedFilter, setSelectedFilter] = useState(null);
-
     return (
         <div className="bg-white-smoke dark:bg-dark-blue-dmb">
             <Header/>
 
             <Content>
-                <FilterWrapper
-                    setSearchText={setSearchText}
-                    setSelectedFilter={setSelectedFilter}/>
-                <Cards
-                    searchText={searchText}
-                    selectedFilter={selectedFilter}/>
+                <Routes>
+                    <Route path="/" element={
+                        <Main/>}/>
+                    <Route path="country/:name" element={<DetailPage/>}/>
+                </Routes>
             </Content>
         </div>
     );
