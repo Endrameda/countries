@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Cards} from "../../components/Cards/Cards";
-import {FilterWrapper} from "../../components/FilterWrapperp/FilterWrapper";
+import {FilterWrapper} from "../../components/FilterWrapper/FilterWrapper";
 
 export const Main = () => {
     const [searchText, setSearchText] = useState('');

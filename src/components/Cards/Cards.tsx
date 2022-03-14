@@ -42,7 +42,7 @@ export const Cards: FC<CardsProps> = ({searchText, selectedFilter}) => {
         <>
             <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-20 sm:gap-10 px-2.5">
                 {data
-                    ?.filter((item: CountryType) => item.name.common.includes(searchText))
+                    ?.filter((item: CountryType) => item.name.common.toLowerCase().includes(searchText.toLowerCase()))
                     .filter(item => item.region !== selectedFilter?.value)
                     .map(item => card({
                         flag: item.flags.svg,
