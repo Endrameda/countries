@@ -1,9 +1,9 @@
 .filterWrapper {
-    @apply flex justify-between mb-20 px-2.5;
+    @apply md:flex justify-between mb-20 px-2.5;
 }
 
 .search {
-    @apply relative;
+    @apply relative block;
 }
 
 .search svg {
@@ -11,5 +11,29 @@
 }
 
 .search-input {
-    @apply h-14 rounded-md w-[480px] px-20 text-sm focus:outline-0 dark:bg-dark-blue-dme dark:text-white font-light;
+    @apply h-14 rounded-md shadow-md dark:shadow-dark-blue-lmt w-full md:w-[480px] mb-5 md:mb-0 px-20 text-sm focus:outline-0 dark:bg-dark-blue-dme dark:text-white font-light;
+}
+
+.custom-select {
+    @apply h-14 rounded-md w-full md:w-[180px] shadow-md dark:shadow-dark-blue-lmt text-sm focus:outline-0 dark:bg-dark-blue-dme dark:text-white font-light;
+}
+
+.select-inner__control {
+    @apply h-14 border-none dark:bg-dark-blue-dme shadow-none !important;
+}
+
+.select-inner__single-value {
+    @apply text-sm dark:text-white font-light !important;
+}
+
+.select-inner__control--is-focused {
+    @apply border-none shadow-none !important;
+}
+
+.select-inner__indicator-separator {
+    display: none;
+}
+
+.select-inner__menu {
+    @apply text-sm dark:text-white font-light dark:bg-dark-blue-dme !important;
 }

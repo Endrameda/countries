@@ -12,13 +12,12 @@ interface cardArgs {
 }
 
 interface CardsProps {
-    searchText: string
+    searchText: string;
+    selectedFilter: {value: string, label: string} | null;
 }
 
-export const Cards: FC<CardsProps> = ({searchText}) => {
+export const Cards: FC<CardsProps> = ({searchText, selectedFilter}) => {
     const {data} = useGetAllCountriesQuery();
-
-    const selector = useSelector((store) => store);
 
     const card = ({flag, name, population, region, capital}: cardArgs) => (
         <a key={name} className="shadow-lg rounded-md bg-white dark:bg-dark-blue-dme mb-5 sm:mb-0">
@@ -39,7 +38,10 @@ export const Cards: FC<CardsProps> = ({searchText}) => {
 
     return (
         <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-20 sm:gap-10 px-2.5">
-            {data?.filter((item: CountryType) => item.name.common.includes(searchText)).map(item => card({
+            {data
+                ?.filter((item: CountryType) => item.name.common.includes(searchText))
+                .filter(item => item.region !== selectedFilter?.value)
+                .map(item => card({
                 flag: item.flags.svg,
                 name: item.name.common,
                 population: item.population,

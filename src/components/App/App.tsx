@@ -6,14 +6,19 @@ import {FilterWrapper} from "../FilterWrapperp/FilterWrapper";
 
 function App() {
     const [searchText, setSearchText] = useState('');
+    const [selectedFilter, setSelectedFilter] = useState(null);
 
     return (
         <div className="bg-white-smoke dark:bg-dark-blue-dmb">
             <Header/>
 
             <Content>
-                <FilterWrapper setSearchText={setSearchText}/>
-                <Cards searchText={searchText}/>
+                <FilterWrapper
+                    setSearchText={setSearchText}
+                    setSelectedFilter={setSelectedFilter}/>
+                <Cards
+                    searchText={searchText}
+                    selectedFilter={selectedFilter}/>
             </Content>
         </div>
     );

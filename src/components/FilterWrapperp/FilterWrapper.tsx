@@ -2,12 +2,23 @@ import React, {FC} from 'react';
 import './filterWrapper.css';
 
 import {ReactComponent as SearchIcon} from "../../assets/icons/search-outline.svg";
+import Select from "react-select";
 
 interface FilterWrapperProps {
-    setSearchText: any
+    setSearchText: React.Dispatch<React.SetStateAction<string>>,
+    setSelectedFilter: any,
 }
 
-export const FilterWrapper : FC<FilterWrapperProps> = ({setSearchText}) => {
+const options = [
+    {value: '', label: 'Filter By Region'},
+    {value: 'Africa', label: 'Africa'},
+    {value: 'Americas', label: 'Americas'},
+    {value: 'Asia', label: 'Asia'},
+    {value: 'Europe', label: 'Europe'},
+    {value: 'Oceania', label: 'Oceania'},
+]
+
+export const FilterWrapper: FC<FilterWrapperProps> = ({setSearchText, setSelectedFilter}) => {
 
     return (
         <div className="filterWrapper">
@@ -21,12 +32,14 @@ export const FilterWrapper : FC<FilterWrapperProps> = ({setSearchText}) => {
                 />
             </label>
 
-            <select name="" id="">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
+            <Select
+                className="custom-select"
+                classNamePrefix="select-inner"
+                defaultValue={options[0]}
+                onChange={setSelectedFilter}
+                options={options}
+                isSearchable={false}
+            />
         </div>
     );
 };
