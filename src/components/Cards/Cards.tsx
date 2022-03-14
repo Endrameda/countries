@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {useGetAllCountriesQuery} from "../../redux/api";
 import {CountryType} from "../../redux/types";
+import {useSelector} from "react-redux";
 
 interface cardArgs {
     flag: string,
@@ -10,20 +11,24 @@ interface cardArgs {
     capital: string[],
 }
 
-export const Cards = () => {
-    const {data} = useGetAllCountriesQuery()
+interface CardsProps {
+    searchText: string
+}
 
-    console.log(data)
+export const Cards: FC<CardsProps> = ({searchText}) => {
+    const {data} = useGetAllCountriesQuery();
+
+    const selector = useSelector((store) => store);
 
     const card = ({flag, name, population, region, capital}: cardArgs) => (
-        <a className="shadow-lg rounded-md">
-            <div >
-                <img src={flag} alt=""/>
+        <a key={name} className="shadow-lg rounded-md bg-white dark:bg-dark-blue-dme mb-5 sm:mb-0">
+            <div>
+                <img className='mx-auto' src={flag} alt=""/>
             </div>
             <div className="p-4">
-                <div className="text-lg font-extrabold">{name}</div>
+                <div className="text-lg font-extrabold text-dark-blue-lmt dark:text-white mb-5">{name}</div>
 
-                <ul>
+                <ul className="text-dark-blue-lmt dark:text-white">
                     <li>Population: {population}</li>
                     <li>Region: {region}</li>
                     <li>Capital: {capital}</li>
@@ -34,7 +39,7 @@ export const Cards = () => {
 
     return (
         <div className="grid grid-cols-1 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 lg:gap-20 sm:gap-10 px-2.5">
-            {data?.map((item: CountryType) => card({
+            {data?.filter((item: CountryType) => item.name.common.includes(searchText)).map(item => card({
                 flag: item.flags.svg,
                 name: item.name.common,
                 population: item.population,

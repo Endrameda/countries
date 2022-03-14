@@ -1,0 +1,15 @@
+.filterWrapper {
+    @apply flex justify-between mb-20 px-2.5;
+}
+
+.search {
+    @apply relative;
+}
+
+.search svg {
+    @apply w-[20px] absolute top-5 left-8 text-dark-gray dark:text-white;
+}
+
+.search-input {
+    @apply h-14 rounded-md w-[480px] px-20 text-sm focus:outline-0 dark:bg-dark-blue-dme dark:text-white font-light;
+}

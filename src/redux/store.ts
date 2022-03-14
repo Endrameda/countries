@@ -7,3 +7,5 @@ export const store = configureStore({
   },
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(countriesApi.middleware),
 });
+
+export type TypeRootState = ReturnType<typeof store.getState>;
